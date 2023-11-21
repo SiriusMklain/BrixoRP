@@ -1,0 +1,47 @@
+.bg-red {
+    background-color: #CA003D !important;
+}
+
+.bg-second {
+    background-color: rgba(149, 157, 168, 0.3) !important;
+}
+
+.may-mt-3 {
+    margin-top: 1rem;
+}
+
+.container-may {
+    margin: 4rem;
+    padding: 3rem;
+    height: 100vh;
+}
+
+.card {
+    padding: 0 !important;
+}
+
+
+.content-center_start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+ @media print {
+  .a4-container {
+    width: 100vw;
+    height: 100vh;
+    page-break-before: always;
+    overflow: auto; /* or scroll, hidden, etc. */
+
+  }
+  .may-mt-3 {
+    margin-top: 0 !important;
+  }
+
+  .container-may {
+    margin: 0 !important;
+    border: 0 !important;
+  }
+}

@@ -1,0 +1,434 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrixoRP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="px-4 navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">BrixoRP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Посещение</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Отчеты</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container"></div>
+    <div class="container pt-5">
+        <h1>Посещение торговой точки</h1>
+        <select class="form-select mb-3 mt-3" aria-label="Default select example">
+          <option selected>Посещение?</option>
+          <option value="1">Первичное</option>
+          <option value="2">Вторичное</option>
+        </select>
+        <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">ИНН</label></h6>
+          <input type="email" class="form-control" id="exampleFormControlInput1">
+        </div>
+         <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">Название (фактическое)</label></h6>
+          <input type="email" class="form-control" id="exampleFormControlInput1">
+        </div>
+         <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">Название (юридическое)</label></h6>
+          <input type="email" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <h6><label class="form-label">Сфера деятельности торговой точки</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> магазин </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> автосервис </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> магазин + автосервис </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> пункт замены масла </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> пункт выдачи интернет-магазина </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> шиномонтаж (замена колодок) </label>
+            </div>
+        </div>
+
+        <select class="form-select mb-3" aria-label="Default select example">
+          <option selected>Структура торговой точки?</option>
+          <option value="1">сетевая</option>
+          <option value="2">одиночная</option>
+        </select>
+
+        <h6><label class="form-label">Оценка/потенциал торговой точки</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> средний розничный автомагазин/среднее СТО с 2 постами </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> зкоспециализированный пункт замены масла на 2 поста и более </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> крупный автомагазин/большое СТО с несколькими постами </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> небольшой розничный магазин/гараж/СТО на 1 пост </label>
+            </div>
+        </div>
+
+        <h6 class="mt-3"><label class="form-label">Статус торговой точки</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> без статуса </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> собственная торговая точка дистрибьютора </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> официальная (сертифицированная) торговая точка </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> торговая точка дилера </label>
+            </div>
+        </div>
+
+        <h6 class="mt-3"><label class="form-label">Есть ли сертификат официальной точки продаж</label></h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefaul" id="flexRadioDefaul1">
+          <label class="form-check-label" for="flexRadioDefaul1">
+            нет
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefaul" id="flexRadioDefaul2" checked>
+          <label class="form-check-label" for="flexRadioDefaul2">
+            да
+          </label>
+        </div>
+
+        <h6 class="mt-3"><label class="form-label">Наличие рекламных материалов брендов компани</label></h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            нет
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            да
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+          <label class="form-check-label" for="flexRadioDefault2">
+            выгоревшие/потерявшие товарный вид
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <h6 class="mt-3"><label for="exampleFormControlInput1" class="form-label">Контактное лицо (Фамилия и имя)</label></h6>
+          <input type="email" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <h6 class="mt-3"><label class="form-label">Должность</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> продавец </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> старший продавец </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> мастер приемщик </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> закупщик </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> генеральный директор </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> собственник </label>
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="иное">
+        </div>
+
+        <h6 class="mt-3"><label class="form-label">Продают ли наши бренды</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> Sure Filters </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Sakura </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> JS Asakashi </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> NIBK </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Brixo </label>
+            </div>
+        </div>
+         <select class="form-select" aria-label="Default select example">
+          <option selected>Зарегистрирована ли ТТ в brixo bonus?</option>
+          <option value="1">да</option>
+          <option value="2">отказались</option>
+        </select>
+
+        <h6 class="mt-3"><label class="form-label">Причины отказа от регистрации в Brixo Bonus</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> не работают с нашими брендами </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> очень низкий оборот по нашим брендам </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> не участвуют в никаких мотивационных программах </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> не верят, что можно что-то получить по итогам данной программы </label>
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="иное">
+        </div>
+
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Готова ли ТТ участвовать в Программе Сертификации?</option>
+          <option value="1">да</option>
+          <option value="2">отказались</option>
+        </select>
+
+        <h6 class="mt-3"><label class="form-label">Причина отказа от участия в программе сертификации</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> не работают с нашими брендами </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> не видят никаких преимуществ в сертификации для собственной торговой точки </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> не участвуют в никаких программах сертификации </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> очень низкий оборот по нашим брендам </label>
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="иное">
+        </div>
+
+        <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">Ежемесячная сумма закупки по брендау SAKURA (со слов респондента)</label></h6>
+          <input type="email" class="form-control" placeholder="0,00">
+        </div>
+
+        <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">Ежемесячный оборот ТТ по всем брендам в Фильтровой группе (со слов респондента)</label></h6>
+          <input type="email" class="form-control" placeholder="0,00">
+        </div>
+
+        <h6><label class="form-label">Основные конкуренты в фильтровальной группе</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> MANN-FILTER </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> MAHLE </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> FILTRON </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> BIG FILTER </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> VIC </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Lynx </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> SCT </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Miles </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Patron </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Goodwill </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Masuma </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Metaco </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Zekkert </label>
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="иное">
+        </div>
+
+        <div class="mb-3">
+         <h6><label for="exampleFormControlInput1" class="form-label">Ежемесячная сумма закупки по бренду NiBK (со слов респондента)</label></h6>
+          <input type="email" class="form-control" placeholder="0,00">
+        </div>
+        <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">Ежемесячный оборот ТТ по всем брендам в Тормозных системах (со слов респондента)</label></h6>
+          <input type="email" class="form-control" placeholder="0,00">
+        </div>
+
+        <h6><label class="form-label">Основные конкуренты в тормозной системе</label></h6>
+        <div class="input-group mb-3">
+             <div class="form-check px-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked"> TRW (ZF Russia) </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Brembo </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> CTR </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> HQ (Sangsin) </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> MK Kashiyama </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Lynx </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Patron </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Metaco </label>
+            </div>
+             <div class="form-check px-4">
+                 <input class="form-check-input" type="checkbox" value="">
+                 <label class="form-check-label" for="flexCheckDefault"> Miles </label>
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="иное">
+        </div>
+
+        <div class="mb-3">
+          <h6><label for="exampleFormControlInput1" class="form-label">На что (кроме цены) обращают внимание/что важно для конечного потребителя при выборе той или иной марки </label></h6>
+          <input type="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <h6><label for="exampleFormControlTextarea1" class="form-label">Комментарии, пожелания, замечания</label></h6>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <h6 class="mt-6"><label for="exampleFormControlTextarea1" class="form-label">Фото</label></h6>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    <img src="{% static 'img/test.png' %}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="{% static 'img/test.png' %}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="{% static 'img/test.png' %}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="{% static 'img/test.png' %}" class="img-thumbnail" alt="...">
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
