@@ -8,6 +8,7 @@ class UserProfile(models.Model):
     """Пользователь"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     workplace = models.CharField(max_length=255, verbose_name="Область работы")
+    photo = models.ImageField(upload_to='user_photo/', blank=True, null=True)
 
     def __str__(self):
         return self.user.username

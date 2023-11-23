@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 <!doctype html>
 <html lang="ru">
   <head>
@@ -9,394 +10,91 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container-may bg-red a4-container">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype-white.svg' %}" alt=""></a>
-        </div>
-      </nav>
-      <div class="row align-items-center content-center_start d-flex flex-column" style="padding-top: 10rem; color: #fff !important;">
-        <h1 class="fw-bold">Итоги работы.</h1>
-        <h3>2й месяц в brixo.</h3>
-        <div class="card mb-3 bg-red" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'img/app2/image_pipple.png' %}" class="img-fluid rounded-start" style="padding-left: 0 !important;" alt="...">
+    {% for report in reports_users %}
+        <div class="container-may bg-red a4-container">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype-white.svg' %}" alt=""></a>
             </div>
-            <div class="col-md-8 py-2">
-              <div class="card-body" style="color: #fff !important; text-align: start">
-                <h5 class="card-title">Павел Головкин</h5>
-                <p class="card-text">Региональный Представитель:</p>
-                <p class="card-text"><small>Воронежская обл., Тамбовская обл., Липецкая обл., Курская обл., Белгородская обл.</small></p>
+          </nav>
+          <div class="row align-items-center content-center_start d-flex flex-column" style="padding-top: 10rem; color: #fff !important;">
+            <h1 class="fw-bold">Итоги работы.</h1>
+            <h3>на {{ report.month }}</h3>
+            <div class="card mb-3 bg-red" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                    {% if report.user_profile__photo %}
+                        <img src="/media/{{ report.user_profile__photo }}" class="img-fluid rounded-start" style="padding-left: 0 !important;" alt="...">
+                    {% else %}
+                        <p>No photo available</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-8 py-2">
+                  <div class="card-body" style="color: #fff !important; text-align: start">
+                    <h5 class="card-title">{{ report.user_profile__user__username }}</h5>
+                    <p class="card-text">Региональный Представитель:</p>
+                    <p class="card-text"><small>{{ report.user_profile__workplace }}</small></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="container-may bg-second a4-container content-center">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-          </div>
-        </nav>
-        <hr>
-        <h5 class="fw-bold">Посещение ТТ:</h5>
-        <div style="padding-top: 7rem">
-
-            <div class="row">
-                <div class="col-lg-2">
-                    <h1 class="fw-bold">90</h1>
-                    <h6 class="fw-bold">Визитов (ТТ) в июле:</h6>
-                </div>
-                <div class="col-lg-3">
-                    <h1>64</h1>
-                    <h6>Розничных ТТ</h6>
-                    <h1>25</h1>
-                    <h6>СТО</h6>
-                </div>
-                <div class="col-lg-3">
-                    <h1>48</h1>
-                    <h6>Закупают SAKURA и есть в наличии</h6>
-                    <h1>19</h1>
-                    <h6>Закупают SAKURA и есть в наличии</h6>
-                </div>
-                <div class="col-lg-3">
-                    <h1>25%</h1>
-                    <h6>Не закупают SAKURA или только под заказ</h6>
-                    <h1>24%</h1>
-                    <h6>Не закупают SAKURA или только под заказ</h6>
-                </div>
-            </div>
-
-            <div class="row" style="padding-top: 8rem">
-                <hr>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3">
-                    <h1>89</h1>
-                    <h6>ТТ</h6>
-                </div>
-                 <div class="col-lg-3">
-                    <h1>±75%</h1>
-                    <h6>Закупают SAKURA на сумму 10 000 – 20 000 рублей в квартал</h6>
-                </div>
-                <div class="col-lg-3"></div>
-            </div>
-            </div>
-    </div>
-
-    <div class="container-may bg-second may-mt-3 a4-container content-center">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-          </div>
-        </nav>
-        <hr>
-        <h5 class="fw-bold">Предложения: что необходимо предпринять, чтобы увеличить долю присутствия SAKURA в ТТ:</h5>
-        <div style="padding-top: 3rem">
-            <ol class="list-group list-group-numbered bg-second">
-              <li class="list-group-item">Запуск акции “Бриксо Бонус”, на мой взгляд, может благоприятно отразится на увеличении доли продукции SAKURA.</li>
-              <li class="list-group-item">Наличие РМ материалов у РП для раздачи в ТТ ( Ручки, блокноты, календари и различная приятная мелочь), для повышения лояльности.</li>
-              <li class="list-group-item">Проведение онлайн презентаций по бренду SAKURA, на которых будут даны основные характеристики продукта, особенности производства. Соответственно, наша задача будет проинформировать клиентов о данном мероприятии и обеспечить максимальную аудитории присутствия.</li>
-            </ol>
-        </div>
-
-    </div>
-
-    <div class="container-may bg-second may-mt-3 a4-container content-center">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-          </div>
-        </nav>
-        <hr>
-        <h5 class="fw-bold">Сертификация ТТ:</h5>
-        <div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h1>13</h1>
-                        </div>
-                        <div class="col-lg-4">
-                            <h1>=</h1>
-                        </div>
-                        <div class="col-lg-4">
-                            <h1>33%</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">на 17.08.2023: Сертифицированных ТТ</div>
-                        <div class="col-lg-6">% выполнения квартального плана (40 ТТ)</div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h6>Причины отклонения/не выполнения (если есть):</h6>
-                    <ol class="list-group list-group-numbered bg-second">
-                      <li class="list-group-item">В июле было 8 сертифицированных ТТ. 3 ТТ не успели во время предоставить фотоотчет о размещении РМ в ТТ.</li>
-                      <li class="list-group-item">Отсутствие по болезни с 31.07 по 14.08.</li>
-                    </ol>
-                </div>
-            </div>
+        <div class="container-may bg-second a4-container content-center">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
+              </div>
+            </nav>
             <hr>
-            <h6 class="fw-bold">Brixo bonus:</h6>
-            <div class="row">
-                <div class="col-lg-2">
-                    <h1>10</h1>
-                    <h6>зарегистрированных ИНН клиентов на 17.08.2023:</h6>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <h1>12</h1>
-                        </div>
-                        <div class="col-lg-10">
-                            <h6>было предложено участие всего:</h6>
-                        </div>
+            <h5 class="fw-bold">Посещение ТТ:</h5>
+            <div style="padding-top: 7rem">
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h1 class="fw-bold">{{ report.visits }}</h1>
+                        <h6 class="fw-bold">Визитов (ТТ) в июле:</h6>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <h1>1</h1>
-                        </div>
-                        <div class="col-lg-10">
-                            <h6>отказались, либо уже были зарегистрированы, либо не могут быть участниками (Дилеры)</h6>
-                        </div>
+                    <div class="col-lg-3">
+                        <h1>{{ report.retail }}</h1>
+                        <h6>Розничных ТТ</h6>
+                        <h1>{{ report.sto }}</h1>
+                        <h6>СТО</h6>
+                    </div>
+                    <div class="col-lg-3">
+                        <h1>{{ report.retail_buy_SAKURA_and_have }}</h1>
+                        <h6>Закупают SAKURA и есть в наличии</h6>
+                        <h1>{{ report.sto_buy_SAKURA_and_have }}</h1>
+                        <h6>Закупают SAKURA и есть в наличии</h6>
+                    </div>
+                    <div class="col-lg-3">
+                        <h1>{{ report.retail_dont_buy_SAKURA_and_have }}</h1>
+                        <h6>Не закупают SAKURA или только под заказ</h6>
+                        <h1>{{ report.sto_dont_buy_SAKURA_and_have }}</h1>
+                        <h6>Не закупают SAKURA или только под заказ</h6>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                   <h6>Комментарии Клиентов/Обратная связь по brixo bonus:</h6>
-                    <ol class="list-group list-group-numbered bg-second">
-                      <li class="list-group-item">Обратная связь положительная, так как многие клиенты соскучились по подобного рода акциям от производителей. На данный момент отказ получил только от 1 РТТ.</li>
-                      <li class="list-group-item">Что касается пожеланий, то многие клиенты просят разрешить возможность добавления до 5 дистрибьютеров на начальном этапе, так как на сегодняшний день уже многие клиенты работают с большим количеством поставщиков.</li>
+            </div>
+        </div>
+        {% for entry in text_sliders_dict %}
+            {% if entry.id == report.id %}
+                {% for slider in entry.text_sliders %}
+                <div class="container-may bg-second may-mt-3 a4-container content-center">
+                    <nav class="navbar navbar-expand-lg">
+                      <div class="container-fluid">
+                        <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
+                      </div>
+                    </nav>
+                    <hr>
+                    <h6 class="fw-bold">{{ slider.title }}</h6>
+                      <ol class="list-group list-group-numbered bg-second">
+                          <li class="list-group-item">{{ slider.text }}</li>
                     </ol>
                 </div>
-            </div>
-        </div>
-
-
-    </div>
-
-    <div class="container-may bg-second may-mt-3 a4-container content-center">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-          </div>
-        </nav>
-        <hr>
-        <h6 class="fw-bold">Акции/Мотивационные программы конкурентов:</h6>
-        <table class="table table-bordered ">
-          <thead class="bg-red">
-            <tr>
-              <th scope="col">Бренд</th>
-              <th scope="col">Условия Акции/мотивационной программы, включая размеры премий, кэшбеков</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>BM</th>
-              <td>
-                  12.07 - 12.10.23 Акция "Время покупать диски BM“
-                    1. При покупке тормозных дисков BM за каждые 15 000 руб. закупки вы получаете электронный сертификат OZON на 1 000 руб. в подарок.
-                    2. Акционная закупка может быть как единоразовой, так и накопительной.
-              </td>
-            </tr>
-            <tr>
-              <th>BM</th>
-              <td>
-                  12.07 - 12.10.23 Акция "Время покупать диски BM“
-                    1. При покупке тормозных дисков BM за каждые 15 000 руб. закупки вы получаете электронный сертификат OZON на 1 000 руб. в подарок.
-                    2. Акционная закупка может быть как единоразовой, так и накопительной.
-              </td>
-            </tr>
-            <tr>
-              <th>BM</th>
-              <td>
-                  12.07 - 12.10.23 Акция "Время покупать диски BM“
-                    1. При покупке тормозных дисков BM за каждые 15 000 руб. закупки вы получаете электронный сертификат OZON на 1 000 руб. в подарок.
-                    2. Акционная закупка может быть как единоразовой, так и накопительной.
-              </td>
-            </tr>
-            <tr>
-              <th>BM</th>
-              <td>
-                  12.07 - 12.10.23 Акция "Время покупать диски BM“
-                    1. При покупке тормозных дисков BM за каждые 15 000 руб. закупки вы получаете электронный сертификат OZON на 1 000 руб. в подарок.
-                    2. Акционная закупка может быть как единоразовой, так и накопительной.
-              </td>
-            </tr>
-            <tr>
-              <th>BM</th>
-              <td>
-                  12.07 - 12.10.23 Акция "Время покупать диски BM“
-                    1. При покупке тормозных дисков BM за каждые 15 000 руб. закупки вы получаете электронный сертификат OZON на 1 000 руб. в подарок.
-                    2. Акционная закупка может быть как единоразовой, так и накопительной.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-    </div>
-
-    <div class="container-may bg-second may-mt-3 a4-container content-center">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-          </div>
-        </nav>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-                <h6 class="fw-bold">Ценовая политика конкурентов VS. SAKURA:</h6>
-                <table class="table table-bordered fs-6">
-                  <thead class="table-light">
-                    <tr>
-                      <th scope="col">Бренд Конкурента</th>
-                      <th scope="col">Артикул Конкурента</th>
-                      <th scope="col">Цена конкурента</th>
-                      <th scope="col">Наша Цена</th>
-                      <th scope="col">Наш артикул</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                    <tr>
-                      <td>Knecht</td>
-                      <td>OC 1063</td>
-                      <td>404,00</td>
-                      <td>354,00</td>
-                      <td>C1936</td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-            <div class="col-lg-6">
-                <h6 class="fw-bold">Рекламации/нарекания по нашим брендам:</h6>
-                <table class="table table-bordered fs-6">
-                  <thead class="table-light">
-                    <tr>
-                      <th scope="col">Наименование/Артикул/Применяемость</th>
-                      <th scope="col">Комментарии Клиента/от ТТ</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>JS ASAKASHI JT 484K</td>
-                      <td>Клиент заказал данный фильтр, но конструктивно отличается от оригинала 317281xz0d, поэтому пришлось сделать</td>
-                    </tr>
-                    <tr>
-                      <td>JS ASAKASHI JT 484K</td>
-                      <td>Клиент заказал данный фильтр, но конструктивно отличается от оригинала 317281xz0d, поэтому пришлось сделать</td>
-                    </tr>
-                    <tr>
-                      <td>JS ASAKASHI JT 484K</td>
-                      <td>Клиент заказал данный фильтр, но конструктивно отличается от оригинала 317281xz0d, поэтому пришлось сделать</td>
-                    </tr>
-                    <tr>
-                      <td>JS ASAKASHI JT 484K</td>
-                      <td>Клиент заказал данный фильтр, но конструктивно отличается от оригинала 317281xz0d, поэтому пришлось сделать</td>
-                    </tr>
-
-                  </tbody>
-                </table>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6"><h6 class="fw-bold">Потенциальные Дилеры в городе/регионе:</h6></div>
-            <div class="col-lg-6"><h6 class="fw-bold text-end text-danger" style="padding-right: 5rem;">Количество 4</h6></div>
-        </div>
-        <table class="table table-bordered">
-          <thead class="table-light">
-            <tr>
-              <th scope="col">Названия Розничных сетей</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Сеть Автотехцентров «Автошина», ИП Доровских – 11 торгово-сервисных центров в г. Воронеж</td>
-            </tr>
-            <tr>
-              <td>Сеть Автотехцентров «Автошина», ИП Доровских – 11 торгово-сервисных центров в г. Воронеж</td>
-            </tr>
-            <tr>
-              <td>Сеть Автотехцентров «Автошина», ИП Доровских – 11 торгово-сервисных центров в г. Воронеж</td>
-            </tr>
-            <tr>
-              <td>Сеть Автотехцентров «Автошина», ИП Доровских – 11 торгово-сервисных центров в г. Воронеж</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-
-    <div class="container-may bg-second may-mt-3 a4-container content-center">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
-      </div>
-    </nav>
-    <hr>
-    <h6 class="fw-bold">Общие комментарии по рынку (по работе)/замечания/предложения:</h6>
-      <ol class="list-group list-group-numbered bg-second">
-          <li class="list-group-item">В целом, после посещения торговых точек, хотелось бы отметить, что доля присутствия наших торговых марок в ассортименте составляет не более 10%. В некоторых ТТ доступна только опция заказа нашей продукции после запроса клиента.
-            В основном, покупатели останавливают свой выбор на нашей ТМ ввиду отсутствия альтернатив или благодаря приемлемой стоимости в сравнении с продукцией премиум-сегмента. Во многих же ТТ наш бренд не представлен вовсе – ни в ассортименте, ни «под заказ».
-            На данный момент, одной из приоритетных задач является работа со сложившимся стереотипом о том, что продукция Sakura ориентирована только на азиатские марки автомобилей. Большинству сотрудников ТТ не известно о нашей новой линейке продукции для европейских авто.
-            Тем не менее, те ТТ, которые торгуют нашей продукцией, отмечают высокое качество брендов, большой ассортимент в наличии у дистрибьюторов на складах. Периодически поступают жалобы на стоимость, ввиду экономического кризиса, это довольно распространенное явление.
-          </li>
-          <li class="list-group-item">В целом, после посещения торговых точек, хотелось бы отметить, что доля присутствия наших торговых марок в ассортименте составляет не более 10%. В некоторых ТТ доступна только опция заказа нашей продукции после запроса клиента.
-            В основном, покупатели останавливают свой выбор на нашей ТМ ввиду отсутствия альтернатив или благодаря приемлемой стоимости в сравнении с продукцией премиум-сегмента. Во многих же ТТ наш бренд не представлен вовсе – ни в ассортименте, ни «под заказ».
-            На данный момент, одной из приоритетных задач является работа со сложившимся стереотипом о том, что продукция Sakura ориентирована только на азиатские марки автомобилей. Большинству сотрудников ТТ не известно о нашей новой линейке продукции для европейских авто.
-            Тем не менее, те ТТ, которые торгуют нашей продукцией, отмечают высокое качество брендов, большой ассортимент в наличии у дистрибьюторов на складах. Периодически поступают жалобы на стоимость, ввиду экономического кризиса, это довольно распространенное явление.
-          </li>
-    </ol>
-  </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
   </body>
 </html>
