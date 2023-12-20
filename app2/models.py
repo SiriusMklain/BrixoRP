@@ -6,9 +6,16 @@ from django.contrib.auth import get_user
 
 class UserProfile(models.Model):
     """Пользователь"""
+    role_list = (
+        ('admin', 'Admin'),
+        ('rbm', 'РБМ'),
+        ('rp', 'РП')
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     workplace = models.CharField(max_length=255, verbose_name="Область работы")
     photo = models.ImageField(upload_to='user_photo/', blank=True, null=True)
+    role = models.CharField(verbose_name='Роль участника', max_length=250, choices=role_list)
+    rbm = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, related_name='rps', verbose_name='Подчиненный РБМ')
 
     def __str__(self):
         return self.user.username
@@ -30,7 +37,7 @@ class VisitToTT(models.Model):
     sto_buy_SAKURA_and_have = models.CharField(max_length=255, verbose_name='Закупают SAKURA и есть в наличии')
     sto_dont_buy_SAKURA_and_have = models.CharField(max_length=255, verbose_name='СТО Не закупают SAKURA или только под заказ в %')
     retail_dont_buy_SAKURA_and_have = models.CharField(max_length=255, verbose_name='Розничные ТТ Не закупают SAKURA или только под заказ в %')
-    month = models.DateField(auto_now=False, auto_now_add=False, verbose_name='За какой месяц?')
+    month = models.DateField(auto_now=False, auto_now_add=False, verbose_name='За какой месяц? в формате (гггг-мм)')
 
     def save(self, *args, **kwargs):
         # Подставляем текущего пользователя в поле user_profile перед сохранением
@@ -51,9 +58,10 @@ class VisitToTT(models.Model):
 class TextSlide(models.Model):
     """Текстовый Слайдер"""
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, editable=False, null=True)
-    visit = models.ForeignKey(VisitToTT, on_delete=models.CASCADE, verbose_name='Посещение ТТ:')
+    visit = models.ForeignKey(VisitToTT, on_delete=models.CASCADE, related_name='text_slides', verbose_name='Посещение ТТ:')
     title = models.CharField(max_length=255, verbose_name='Заголовок листа')
     text = models.TextField(verbose_name="Текстовое поле")
+    text_image = models.ImageField(upload_to='text_image/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Подставляем текущего пользователя в поле user_profile перед сохранением
@@ -69,26 +77,3 @@ class TextSlide(models.Model):
     class Meta:
         verbose_name = 'Текстовый Слайдер'
         verbose_name_plural = 'Текстовые Слайдеры'
-
-
-class ImageSlide(models.Model):
-    """Image Слайдер"""
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, editable=False, null=True)
-    visit = models.ForeignKey(VisitToTT, on_delete=models.CASCADE, verbose_name='Посещение ТТ:')
-    title = models.CharField(max_length=255, verbose_name='Заголовок листа')
-    image = models.ImageField(upload_to='image_slide/')
-
-    def save(self, *args, **kwargs):
-        # Подставляем текущего пользователя в поле user_profile перед сохранением
-        if not self.user_profile:
-            # Если поле user_profile не заполнено
-            user_profile, created = UserProfile.objects.get_or_create(user=self.user)
-            self.user_profile = user_profile
-        super(ImageSlide, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Image Слайдер'
-        verbose_name_plural = 'Image Слайдеры'

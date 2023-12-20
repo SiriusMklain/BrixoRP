@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from .models import UserProfile, VisitToTT, TextSlide, ImageSlide
+from .models import UserProfile, VisitToTT, TextSlide
 
 
 @admin.register(UserProfile)
@@ -76,38 +76,6 @@ class TextSlideAdmin(ModelAdmin):
         'user_profile',
         'title',
         'text'
-    ]
-
-    def save_model(self, request, obj, form, change):
-        if not obj.user_profile:
-            obj.user_profile = UserProfile.objects.get(user=request.user)
-        super().save_model(request, obj, form, change)
-
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        if request.user.is_superuser:
-            return qs
-        return qs.filter(user_profile__user=request.user)
-
-    def has_change_permission(self, request, obj=None):
-        if not obj:  # Добавление новой записи
-            return True
-        # Редактирование существующей записи
-        return obj.user_profile.user == request.user or request.user.is_superuser
-
-    def has_delete_permission(self, request, obj=None):
-        if not obj:  # Удаление новой записи
-            return True
-        # Удаление существующей записи
-        return obj.user_profile.user == request.user or request.user.is_superuser
-
-
-@admin.register(ImageSlide)
-class ImageSlideAdmin(ModelAdmin):
-    list_display = [
-        'visit',
-        'user_profile',
-        'title'
     ]
 
     def save_model(self, request, obj, form, change):

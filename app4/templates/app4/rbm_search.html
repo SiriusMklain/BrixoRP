@@ -1,0 +1,39 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrixoRP</title>
+      <link rel="stylesheet" href="{% static 'main.css' %}" data-n-g="">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="search_report container">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'visit-to-tt-list' %}"><img src="{% static 'img/app2/logotype.svg' %}" alt=""></a>
+
+            <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+              <div class="me-auto"></div>
+
+            </div>
+          </div>
+        </nav>
+    </div>
+<body>
+
+    <!-- Отображение существующих записей -->
+    <h2>Список отчетов</h2>
+    <ul>
+        {% for visit in visits %}
+            <li>
+                {{ visit.month|date:"F Y" }} {{ visit.user_profile }}
+                <a href="{% url 'visit-to-tt-edit' pk=visit.pk %}">Посмотреть</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>

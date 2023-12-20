@@ -28,20 +28,44 @@
     text-align: center;
 }
 
- @media print {
-  .a4-container {
-    width: 100vw;
+.vertical-line {
+    border-left: 2px solid #000;
+    height: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.a4-container {
     height: 100vh;
     page-break-before: always;
-    overflow: auto; /* or scroll, hidden, etc. */
+    overflow: auto;
+}
 
-  }
-  .may-mt-3 {
-    margin-top: 0 !important;
-  }
+@media print {
+    .a4-container {
+        width: 100vw;
+        height: 100vh;
+        page-break-before: always;
+        overflow: auto;
+    }
+    .may-mt-3 {
+        margin-top: 0 !important;
+    }
 
-  .container-may {
-    margin: 0 !important;
-    border: 0 !important;
-  }
+    .container-may {
+        margin: 0 !important;
+        border: 0 !important;
+    }
+
+    .search_report {
+        display: none !important;
+    }
+    .body {
+        transform: rotate(0deg);
+        size: A4;
+        page-break-before: auto;
+        page-break-inside: auto;
+        page-break-after: auto;
+        page: auto;
+    }
 }

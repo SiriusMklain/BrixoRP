@@ -18,11 +18,24 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from app3.views import CustomLoginView
+from app4.views import VisitToTTView, EditVisitToTTView, EditSlide, NewSlide, ViewRept, DeleteSlide, AddedRept
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('visit/', include('app.urls')),
     path('report/', include('app2.urls')),
+
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('list/', VisitToTTView.as_view(), name='visit-to-tt-list'),
+    path('rept/<int:pk>/', EditVisitToTTView.as_view(), name='visit-to-tt-edit'),
+    path('added-rept/', AddedRept.as_view(), name='added-rept'),
+
+    path('view/<int:pk>/', ViewRept.as_view(), name='view-rept'),
+    path('delete-slide/<int:slide_id>/<int:pk>/', DeleteSlide.as_view(), name='delete-slide'),
+
+    path('edit-visit-to-tt/edit-slide/<int:slide_id>/', EditSlide.as_view(), name='visit-to-tt-edit-slide'),
+    path('edit-visit-to-tt/new-slide/', NewSlide.as_view(), name='new-slider-data'),
 ]
 
 if settings.DEBUG:

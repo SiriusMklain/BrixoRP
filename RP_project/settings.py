@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'app2',
+    'app3',
+    'app4',
 ]
+
+# AUTH_USER_MODEL = 'app2.UserProfile'
+LOGIN_REDIRECT_URL = '/list/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
