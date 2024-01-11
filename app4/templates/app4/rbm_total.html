@@ -39,7 +39,7 @@
               <div class="row g-0">
                 <div class="col-md-4">
                     {% if report.user_profile__photo %}
-                        <img src="/media/{{ report.user_profile__photo }}" class="img-fluid rounded-start" style="padding-left: 0 !important;" alt="...">
+                        <img src="/image/{{ report.user_profile__photo }}" class="img-fluid rounded-start" style="padding-left: 0 !important;" alt="...">
                     {% else %}
                         <p>No photo available</p>
                     {% endif %}
@@ -107,7 +107,7 @@
 {#                          <li class="list-group-item">{{ slider.text }}</li>#}
 {#                    </ol>#}
                     <p>{{ slider.text }}</p>
-                    <img src="/media/{{ slider.text_image }}" class="img-fluid" alt="...">
+                    <img src="/image/{{ slider.text_image }}" class="img-fluid" alt="...">
                 </div>
                 {% endfor %}
             {% endif %}

@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     build: .
-    command:  sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn BrixoDoc.wsgi:application --bind 0.0.0.0:30063 --timeout 600 --reload -w 4"
+    command:  sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn RP_project.wsgi:application --bind 0.0.0.0:30063 --timeout 600 --reload -w 4"
     volumes:
       - ./:/usr/src/app/
       - static_volume:/usr/src/app/static
@@ -22,14 +22,14 @@ services:
       - POSTGRES_PASSWORD=haeryrdfghdfg
       - POSTGRES_DB=rp_admin
     ports:
-      - "5432:5432"
+      - "5431:5431"
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "123:123"
-      - "443:443"
+      - "124:124"
+      - "441:441"
     depends_on:
       - web
     volumes:
