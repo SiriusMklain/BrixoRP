@@ -35,13 +35,13 @@
                 {% csrf_token %}
                 {{ text_slide_form.as_p }}
 
-                <button class="btn btn-primary" type="submit">Обновить слайдер</button>
-                <a class="btn btn-danger" href="{% url 'delete-slide' pk=visit.pk slide_id=text_slide_form.instance.id %}">Удалить Слайдер</a>
+                <button class="btn btn-primary" type="submit">Обновить слайд</button>
+                <a class="btn btn-danger" href="{% url 'delete-slide' pk=visit.pk slide_id=text_slide_form.instance.id %}">Удалить Слайд</a>
             </form>
         {% endfor %}
 
 
-        <button class="btn btn-info may-mt-3 mb-3" id="addSliderButton" data-url="{% url 'new-slider-data' %}">Добавить слайдер</button>
+        <button class="btn btn-info may-mt-3 mb-3" id="addSliderButton" data-url="{% url 'new-slider-data' %}">Добавить слайд</button>
         <div id="sliderFormContainer"></div>
     </div>
 
